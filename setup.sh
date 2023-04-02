@@ -109,6 +109,7 @@ function fastertransformer_backend(){
         DEST="${MODEL}-${NUM_GPUS}gpu"
         ARCHIVE="${MODELS_ROOT_DIR}/${DEST}.tar.zst"
         cp -r "$SCRIPT_DIR"/converter/models/"$DEST" "${MODELS_ROOT_DIR}"
+        echo "downloading model => https://huggingface.co/moyix/${MODEL}-gptj/resolve/main/${MODEL}-${NUM_GPUS}gpu.tar.zst"
         curl -L "https://huggingface.co/moyix/${MODEL}-gptj/resolve/main/${MODEL}-${NUM_GPUS}gpu.tar.zst" \
             -o "$ARCHIVE"
         zstd -dc "$ARCHIVE" | tar -xf - -C "${MODELS_ROOT_DIR}"
